@@ -50,9 +50,8 @@ const lessonPanelToggle=document.querySelector("#lesson-panel-toggle");
 function setLessonPanel(open){document.documentElement.classList.toggle("lessons-hidden",!open);lessonPanelToggle.setAttribute("aria-expanded",String(open));lessonPanelToggle.querySelector(".toggle-label").textContent=open?"Hide lessons":"Show lessons";try{localStorage.setItem("lesson-panel-open",String(open));}catch{}}
 let lessonPanelOpen=true;try{lessonPanelOpen=localStorage.getItem("lesson-panel-open")!=="false";}catch{}
 setLessonPanel(lessonPanelOpen);lessonPanelToggle.addEventListener("click",()=>setLessonPanel(lessonPanelToggle.getAttribute("aria-expanded")!=="true"));
-const audio=document.querySelector("#lesson-audio"),audioStatus=document.querySelector("#audio-status");let localAudioURL=null;
-function loadAudio(src,message){audio.src=src;audio.hidden=false;audioStatus.textContent=message;audio.load();}
-audio.addEventListener("error",()=>{audioStatus.textContent="This recording could not be loaded. Try another audio file from your device.";audio.hidden=true;});
-if(window.LESSON_AUDIO)loadAudio(window.LESSON_AUDIO,"Lesson recording");
-document.querySelector("#audio-file").addEventListener("change",e=>{const file=e.target.files[0];if(!file)return;if(!file.type.startsWith("audio/")&&!/\.(mp3|wav|m4a|ogg|aac|flac|webm)$/i.test(file.name)){audioStatus.textContent="Please choose an audio file, such as MP3, M4A, or WAV.";return;}audio.pause();if(localAudioURL)URL.revokeObjectURL(localAudioURL);localAudioURL=URL.createObjectURL(file);loadAudio(localAudioURL,`Ready to listen: ${file.name}. Local file · not uploaded.`);});
-window.addEventListener("pagehide",()=>{if(localAudioURL)URL.revokeObjectURL(localAudioURL);wordAudio.pause();});
+const audio=document.querySelector("#lesson-audio"),audioStatus=document.querySelector("#audio-status");
+function loadAudio(src,message){audio.src=src;audioStatus.textContent=message;audio.load();}
+audio.addEventListener("error",()=>{audioStatus.textContent="The lesson recording could not be loaded. Please try again later.";});
+if(window.LESSON_AUDIO)loadAudio(window.LESSON_AUDIO,"Full lesson audio");
+window.addEventListener("pagehide",()=>{wordAudio.pause();});
