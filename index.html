@@ -7,14 +7,14 @@
   <meta name="description" content="Lesson 1 review: Chinese vocabulary, grammar, and practice.">
   <title>Lesson 01 · Hello! — Chinese by Ear</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23254cdb'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-size='44' fill='white'%3E好%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css?v=2">
   <script src="./config.js" defer></script>
-  <script src="./app.js" defer></script>
+  <script src="./app.js?v=2" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to lesson</a>
 <div class="site-shell">
-<aside class="lesson-sidebar" aria-label="Course lessons">
+<aside class="lesson-sidebar" id="lesson-sidebar" aria-label="Course lessons">
   <div class="course-heading"><span class="course-kicker">NEW HSK 1</span><strong>Course lessons</strong></div>
   <ol class="lesson-list">
     <li><a class="lesson-link is-current" href="#main" aria-current="page"><span class="lesson-index">01</span><span><strong>你好 · Hello</strong><small>Current lesson</small></span></a></li>
@@ -25,7 +25,7 @@
   </ol>
 </aside>
 <div class="site-content">
-<header class="wrap site-header"><a class="brand" href="#"><span class="brand-mark" lang="zh-Hans" aria-hidden="true">听</span><span>Chinese <em>by Ear</em></span></a><nav class="section-nav" aria-label="Lesson sections"><a href="#vocabulary">Vocabulary</a><a href="#grammar">Grammar</a><a href="#practice">Practice</a></nav></header>
+<header class="wrap site-header"><div class="header-start"><button class="lesson-panel-toggle" id="lesson-panel-toggle" type="button" aria-controls="lesson-sidebar" aria-expanded="true"><span class="toggle-icon" aria-hidden="true">‹</span><span class="toggle-label">Hide lessons</span></button><a class="brand" href="#"><span class="brand-mark" lang="zh-Hans" aria-hidden="true">听</span><span>Chinese <em>by Ear</em></span></a></div><nav class="section-nav" aria-label="Lesson sections"><a href="#vocabulary">Vocabulary</a><a href="#grammar">Grammar</a><a href="#practice">Practice</a></nav></header>
 <main id="main" class="wrap">
   <div class="lesson-heading"><div class="lesson-title"><p class="lesson-label">HSK 1 · LESSON 01</p><h1><span lang="zh-Hans">你好</span> <span class="title-english">Hello</span></h1></div>
     <div class="audio-block"><audio id="lesson-audio" controls preload="metadata" hidden aria-label="Lesson one recording"></audio><div class="audio-actions"><label class="file-button" for="audio-file">Open lesson audio</label><input id="audio-file" class="visually-hidden" type="file" accept="audio/*"><span id="audio-status" role="status">Recording not added yet.</span></div></div>
@@ -33,7 +33,7 @@
   <section id="vocabulary" aria-labelledby="vocabulary-title">
     <div class="section-heading"><h2 id="vocabulary-title"><span class="section-number" aria-hidden="true">01</span>Vocabulary</h2><div class="display-options"><label><input id="show-pinyin" type="checkbox" checked> Pinyin</label><label><input id="show-english" type="checkbox" checked> English</label></div></div>
     <table id="vocabulary-table"><thead><tr><th scope="col">Chinese</th><th scope="col">Pinyin</th><th scope="col">English</th><th scope="col"><span class="visually-hidden">Pronunciation</span></th></tr></thead><tbody id="vocabulary-list"></tbody></table>
-    <p class="small" id="speech-status" role="status">Pronunciation buttons use a device voice.</p>
+    <p class="visually-hidden" id="audio-feedback" role="status" aria-live="polite"></p>
   </section>
   <section id="grammar" aria-labelledby="grammar-title"><h2 id="grammar-title"><span class="section-number" aria-hidden="true">02</span>Grammar</h2>
     <article class="grammar-item"><h3>1. <span lang="zh-Hans">你</span> and <span lang="zh-Hans">您</span></h3><p><strong>Nǐ</strong> is everyday “you.” <strong>Nín</strong> is respectful. Use <span lang="zh-Hans">您好</span> for a more polite greeting.</p></article>
