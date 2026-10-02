@@ -54,4 +54,8 @@ const audio=document.querySelector("#lesson-audio"),audioStatus=document.querySe
 function loadAudio(src,message){audio.src=src;audioStatus.textContent=message;audio.load();}
 audio.addEventListener("error",()=>{audioStatus.textContent="The lesson recording could not be loaded. Please try again later.";});
 if(window.LESSON_AUDIO)loadAudio(window.LESSON_AUDIO,"Full lesson audio");
+document.querySelector("#skip-intro").addEventListener("click",()=>{
+  const jumpToIntroEnd=()=>{audio.currentTime=Math.min(80,Number.isFinite(audio.duration)?audio.duration:80);audioStatus.textContent="Skipped to 1:20";audio.play().catch(()=>{audioStatus.textContent="Skipped to 1:20 · Press play to continue";});};
+  if(audio.readyState>=1)jumpToIntroEnd();else audio.addEventListener("loadedmetadata",jumpToIntroEnd,{once:true});
+});
 window.addEventListener("pagehide",()=>{wordAudio.pause();});
